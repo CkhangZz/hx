@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tớ Có Điều Muốn Nói 😳</title>
+
+  <!-- Font chữ dễ thương -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: url('https://i.pinimg.com/originals/63/e7/cc/63e7cce5f61e2d65c7e6e4184f7a6a83.gif') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Dancing Script', cursive;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .container {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .line {
+      font-size: 2.2rem;
+      background: rgba(255, 240, 245, 0.85);
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      animation: fadeUp 0.8s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .buttons {
+      position: absolute;
+      bottom: 80px;
+      width: 100%;
+      text-align: center;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .heart-image {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 20px;
+      animation: pop 0.6s ease;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    button {
+      font-size: 1rem;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .yes {
+      background-color: #ff85b3;
+      color: white;
+    }
+
+    .no {
+      background-color: #eee;
+      color: #333;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://i.pinimg.com/originals/b6/7b/5e/b67b5e4efc3388e76f3b0f1d4abf0f2c.gif') no-repeat center;
+      background-size: contain;
+      animation: fall 5s linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <div id="text" class="line">[Click vào màn hình để bắt đầu...]</div>
+
+    <div class="buttons" id="buttons">
+      <!-- Trái tim ảnh gif -->
+      <button class="yes" onclick="sendWebhook('❤️ Ai đó đã chọn: CÓ!')">Có 🥹</button>
+      <button class="no" onclick="sendWebhook('💔 Ai đó đã chọn: KHÔNG!')">Không 😢</button>
+    </div>
+  </div>
+
+  <script>
+    const lines = [
+      "Chào Cậu 😳",
+      "Tớ..",
+      "......",
+      "Thật Ra Đã Suy Nghĩ Rất Nhiều Trước Khi Gửi Tin Nhắn Này.. 🥺💭",
+      "......",
+      "Tớ Vẫn Rất Thích Cậu 🫶",
+      "Mỗi Lần Nhắn Tin Với Cậu, Tớ Cảm Thấy Rất Vui 😊💗",
+      "Vậy Nên 👉👈",
+      "...",
+      "Cậu Có Thể Cho Tớ Thêm 1 Cơ Hội Nữa Được Không 🥲🎀"
+    ];
+
+    const textEl = document.getElementById("text");
+    const buttonsEl = document.getElementById("buttons");
+
+    let index = 0;
+
+    function showNextLine() {
+      if (index < lines.length) {
+        textEl.style.animation = 'none';
+        void textEl.offsetWidth;
+        textEl.textContent = lines[index];
+        textEl.style.animation = 'fadeUp 0.8s ease';
+        index++;
+      } else {
+        textEl.style.display = "none";
+        buttonsEl.style.display = "flex";
+      }
+    }
+
+    document.body.addEventListener("click", () => {
+      if (buttonsEl.style.display !== "flex") {
+        showNextLine();
+      }
+    });
+
+    // Trái tim rơi
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 300);
+
+    // Gửi về Webhook Discord
+    function sendWebhook(message) {
+      fetch("https://discord.com/api/webhooks/1375752753640374282/lCI9AN8ee7tphzouAjUKzoZ1RqzVgw8iWw8tuYA6UgefeAkmpsKwUQQwEAmfp9vLi7Eb", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: message })
+      }).then(() => {
+        alert("Đã gửi lựa chọn của bạn 💖");
+      }).catch(err => {
+        alert("Gửi không thành công ❌");
+        console.error(err);
+      });
+    }
+  </script>
+</body>
+</html>

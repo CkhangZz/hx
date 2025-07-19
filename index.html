@@ -1,204 +1,116 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tớ Có Điều Muốn Nói 😳</title>
-
-  <!-- Font chữ dễ thương -->
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background: url('https://i.pinimg.com/originals/63/e7/cc/63e7cce5f61e2d65c7e6e4184f7a6a83.gif') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Dancing Script', cursive;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .container {
-      position: relative;
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      flex-direction: column;
-    }
-
-    .line {
-      font-size: 2.2rem;
-      background: rgba(255, 240, 245, 0.85);
-      padding: 30px 40px;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-      animation: fadeUp 0.8s ease;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .buttons {
-      position: absolute;
-      bottom: 80px;
-      width: 100%;
-      text-align: center;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .heart-image {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 20px;
-      animation: pop 0.6s ease;
-    }
-
-    @keyframes pop {
-      0% {
-        transform: scale(0.5);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    button {
-      font-size: 1rem;
-      font-family: 'Segoe UI', sans-serif;
-      padding: 10px 20px;
-      margin: 10px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    .yes {
-      background-color: #ff85b3;
-      color: white;
-    }
-
-    .no {
-      background-color: #eee;
-      color: #333;
-    }
-
-    button:hover {
-      transform: scale(1.1);
-    }
-
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: url('https://i.pinimg.com/originals/b6/7b/5e/b67b5e4efc3388e76f3b0f1d4abf0f2c.gif') no-repeat center;
-      background-size: contain;
-      animation: fall 5s linear infinite;
-      opacity: 0.8;
-      pointer-events: none;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Profile Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e90ff, #ffffff);
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        .card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .card img:hover {
+            transform: scale(1.1);
+        }
+        .card h1 {
+            font-size: 28px;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .card p {
+            font-size: 16px;
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+        .card .role {
+            color: #00b7eb;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .social-links a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #00b7eb;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkle 1.5s infinite;
+            pointer-events: none;
+        }
+        @keyframes sparkle {
+            0% { transform: scale(0); opacity: 0.8; }
+            50% { transform: scale(1.5); opacity: 0.4; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
-  <div class="container" id="container">
-    <div id="text" class="line">[Click vào màn hình để bắt đầu...]</div>
+    <div class="card">
+        <img src="https://via.placeholder.com/150" alt="Anime Avatar">
+        <h1>Sakura-chan</h1>.
 
-    <div class="buttons" id="buttons">
-      <!-- Trái tim ảnh gif -->
-      <button class="yes" onclick="sendWebhook('❤️ Ai đó đã chọn: CÓ!')">Có 🥹</button>
-      <button class="no" onclick="sendWebhook('💔 Ai đó đã chọn: KHÔNG!')">Không 😢</button>
+        <p class="role">Ninja of Konoha</p>
+        <p>Age: 17</p>
+        <p>Specialty: Healing Jutsu & Super Strength</p>
+        <p>Favorite Quote: "I'll protect my friends no matter what!"</p>
+        <div class="social-links">
+            <a href="#">🌸 Twitter</a>
+            <a href="#">🌟 Instagram</a>
+        </div>
     </div>
-  </div>
 
-  <script>
-    const lines = [
-      "Chào Cậu 😳",
-      "Tớ..",
-      "......",
-      "Thật Ra Đã Suy Nghĩ Rất Nhiều Trước Khi Gửi Tin Nhắn Này.. 🥺💭",
-      "......",
-      "Tớ Vẫn Rất Thích Cậu 🫶",
-      "Mỗi Lần Nhắn Tin Với Cậu, Tớ Cảm Thấy Rất Vui 😊💗",
-      "Vậy Nên 👉👈",
-      "...",
-      "Cậu Có Thể Cho Tớ Thêm 1 Cơ Hội Nữa Được Không 🥲🎀"
-    ];
+    <script>
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1500);
+        }
 
-    const textEl = document.getElementById("text");
-    const buttonsEl = document.getElementById("buttons");
-
-    let index = 0;
-
-    function showNextLine() {
-      if (index < lines.length) {
-        textEl.style.animation = 'none';
-        void textEl.offsetWidth;
-        textEl.textContent = lines[index];
-        textEl.style.animation = 'fadeUp 0.8s ease';
-        index++;
-      } else {
-        textEl.style.display = "none";
-        buttonsEl.style.display = "flex";
-      }
-    }
-
-    document.body.addEventListener("click", () => {
-      if (buttonsEl.style.display !== "flex") {
-        showNextLine();
-      }
-    });
-
-    // Trái tim rơi
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }, 300);
-
-    // Gửi về Webhook Discord
-    function sendWebhook(message) {
-      fetch("https://discord.com/api/webhooks/1375752753640374282/lCI9AN8ee7tphzouAjUKzoZ1RqzVgw8iWw8tuYA6UgefeAkmpsKwUQQwEAmfp9vLi7Eb", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: message })
-      }).then(() => {
-        alert("Đã gửi lựa chọn của bạn 💖");
-      }).catch(err => {
-        alert("Gửi không thành công ❌");
-        console.error(err);
-      });
-    }
-  </script>
+        setInterval(createSparkle, 300);
+    </script>
 </body>
 </html>
